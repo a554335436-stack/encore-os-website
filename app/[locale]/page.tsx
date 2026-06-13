@@ -411,15 +411,15 @@ function CaseStudies() {
         {cases.map((item) => (
           <article
             key={item.brand}
-            className={`${item.variant} relative h-[168px] overflow-hidden rounded-xl border border-black/[0.06] p-6 shadow-[0_16px_38px_rgba(20,22,14,0.08)]`}
+            className={`${item.variant} relative h-[168px] overflow-hidden rounded-xl border border-black/[0.06] px-6 py-5 shadow-[0_16px_38px_rgba(20,22,14,0.08)]`}
           >
             <div className="relative z-10">
               <span className="inline-flex rounded-md bg-white/55 px-3 py-1 text-[10px] font-semibold uppercase text-black/50 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.35)] backdrop-blur-sm">
                 {item.label}
               </span>
-              <h3 className="mt-4 text-xl font-semibold tracking-normal text-black/82">{item.brand}</h3>
-              <div className="mt-4 text-[34px] font-medium leading-none tracking-normal text-black/88">{item.value}</div>
-              <p className="mt-4 text-xs font-medium text-black/52">{item.metric}</p>
+              <h3 className="mt-4 text-[19px] font-semibold leading-none tracking-normal text-black/82">{item.brand}</h3>
+              <div className="mt-5 text-[31px] font-medium leading-none tracking-normal text-black/88">{item.value}</div>
+              <p className="mt-3 text-xs font-medium leading-none text-black/52">{item.metric}</p>
             </div>
             <CaseVisual variant={item.variant} />
           </article>
@@ -443,14 +443,14 @@ function CaseVisual({ variant }: { variant: string }) {
     return (
       <div className="pointer-events-none absolute inset-y-0 right-0 w-[58%]">
         <span className="absolute inset-y-0 left-0 w-24 bg-white/25 blur-xl" />
-        <span className="absolute bottom-5 left-8 h-[96px] w-[44px] rounded-md bg-white/82 shadow-[0_16px_24px_rgba(0,0,0,0.12)]">
+        <span className="absolute bottom-5 left-8 h-[90px] w-[42px] rounded-md bg-white/82 shadow-[0_16px_24px_rgba(0,0,0,0.12)]">
           <span className="absolute left-2 top-8 h-8 w-7 rounded-sm bg-white/70" />
         </span>
-        <span className="absolute bottom-5 left-[5.4rem] h-[138px] w-[52px] rounded-b-lg rounded-t-xl bg-[#f0bbaa]/72 shadow-[0_16px_24px_rgba(0,0,0,0.14)]">
+        <span className="absolute bottom-5 left-[5.4rem] h-[128px] w-[50px] rounded-b-lg rounded-t-xl bg-[#f0bbaa]/72 shadow-[0_16px_24px_rgba(0,0,0,0.14)]">
           <span className="absolute left-2 top-2 h-8 w-8 rounded-sm bg-white/65" />
           <span className="absolute left-3 top-14 h-10 w-7 rounded-sm bg-white/40" />
         </span>
-        <span className="absolute bottom-5 left-[8.7rem] h-[154px] w-[58px] rounded-b-lg rounded-t-xl bg-white/82 shadow-[0_16px_24px_rgba(0,0,0,0.14)]">
+        <span className="absolute bottom-5 left-[8.7rem] h-[142px] w-[56px] rounded-b-lg rounded-t-xl bg-white/82 shadow-[0_16px_24px_rgba(0,0,0,0.14)]">
           <span className="absolute left-3 top-12 h-12 w-8 rounded-sm bg-white/50" />
         </span>
         <span className="absolute left-[5.95rem] top-2 h-20 w-2 rounded-full bg-white/82" />
@@ -484,13 +484,13 @@ function CaseVisual({ variant }: { variant: string }) {
 
   return (
     <div className="pointer-events-none absolute inset-y-0 right-0 w-[56%]">
-      <span className="absolute bottom-3 right-8 h-[82px] w-[180px] rounded-[50%] bg-white/62 shadow-[inset_0_10px_24px_rgba(255,255,255,0.65),0_16px_24px_rgba(0,0,0,0.12)]" />
-      <span className="absolute bottom-4 right-16 h-[62px] w-[130px] rounded-[48%] border-[8px] border-black/18" />
-      <span className="absolute right-[6.7rem] top-3 h-[118px] w-[82px] rounded-full border-[7px] border-[#181a19]/82" />
-      <span className="absolute right-[3.8rem] top-3 h-[118px] w-[82px] rounded-full border-[7px] border-[#181a19]/82" />
-      <span className="absolute right-[8.7rem] top-[5.4rem] h-[54px] w-[54px] rounded-full border-[7px] border-[#181a19]/82" />
-      <span className="absolute right-[5.6rem] top-[2.5rem] h-[84px] w-[7px] rotate-[-2deg] rounded-full bg-[#181a19]/82" />
-      <span className="absolute right-[8.2rem] top-[4.6rem] h-[70px] w-[7px] rotate-[12deg] rounded-full bg-[#181a19]/82" />
+      <span className="absolute bottom-3 right-8 h-[78px] w-[174px] rounded-[50%] bg-white/62 shadow-[inset_0_10px_24px_rgba(255,255,255,0.65),0_16px_24px_rgba(0,0,0,0.12)]" />
+      <span className="absolute bottom-4 right-16 h-[58px] w-[124px] rounded-[48%] border-[8px] border-black/18" />
+      <span className="absolute right-[6.7rem] top-3 h-[112px] w-[78px] rounded-full border-[7px] border-[#181a19]/82" />
+      <span className="absolute right-[3.9rem] top-3 h-[112px] w-[78px] rounded-full border-[7px] border-[#181a19]/82" />
+      <span className="absolute right-[8.6rem] top-[5.1rem] h-[50px] w-[50px] rounded-full border-[7px] border-[#181a19]/82" />
+      <span className="absolute right-[5.55rem] top-[2.55rem] h-[78px] w-[7px] rotate-[-2deg] rounded-full bg-[#181a19]/82" />
+      <span className="absolute right-[8.1rem] top-[4.55rem] h-[64px] w-[7px] rotate-[12deg] rounded-full bg-[#181a19]/82" />
     </div>
   );
 }
