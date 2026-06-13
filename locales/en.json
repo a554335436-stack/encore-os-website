@@ -1,0 +1,192 @@
+{
+  "seo": {
+    "title": "Encore Influence | AI-Native Influencer Marketing Agency",
+    "description": "Encore Influence combines proprietary AI systems with global creators to help brands create campaigns worth remembering."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "ai": "AI Engine",
+    "cases": "Case Studies",
+    "contact": "Contact"
+  },
+  "common": {
+    "book": "Book a Call",
+    "cases": "View Case Studies",
+    "contact": "Contact Us",
+    "language": "Language"
+  },
+  "hero": {
+    "eyebrow": "AI-native influencer marketing agency",
+    "title": "Create Moments Worth an Encore.",
+    "subtitle": "We combine proprietary AI systems with global creators to help brands create campaigns people want to watch again, share again, and remember.",
+    "claim": "We don't just find creators. We engineer influence.",
+    "metrics": [
+      { "value": "AI", "label": "creator intelligence" },
+      { "value": "Global", "label": "creator network" },
+      { "value": "Human", "label": "quality judgment" }
+    ],
+    "cards": [
+      "Audience signal mapping",
+      "Creator fit scoring",
+      "Content licensing workflow"
+    ]
+  },
+  "philosophy": {
+    "title": "Why “Encore”?",
+    "body": [
+      "In theatre, an encore is the moment when the audience asks performers to return for one more performance.",
+      "At Encore Influence, we believe great marketing should create the same feeling.",
+      "We don't just connect brands with creators. We engineer influence moments people want to experience again."
+    ]
+  },
+  "ai": {
+    "title": "Powered by AI. Perfected by Humans.",
+    "subtitle": "Our proprietary AI workflow helps us discover, evaluate, match, and manage creators with greater precision and speed.",
+    "items": [
+      {
+        "title": "AI Discovery",
+        "text": "Find high-potential creators across global social platforms."
+      },
+      {
+        "title": "AI Intelligence",
+        "text": "Analyze content style, audience signals, commercial fit, and collaboration history."
+      },
+      {
+        "title": "AI Matching",
+        "text": "Match brands with creators based on campaign goals, market, category, tone and audience."
+      },
+      {
+        "title": "AI Workflow",
+        "text": "Streamline outreach, tracking, execution and campaign management."
+      }
+    ]
+  },
+  "services": {
+    "title": "What We Do",
+    "items": [
+      {
+        "title": "Influencer Marketing",
+        "text": "End-to-end global influencer campaigns from creator sourcing to execution."
+      },
+      {
+        "title": "Creator Sourcing",
+        "text": "Find the right creators for your market, category, budget, and brand tone."
+      },
+      {
+        "title": "Content Licensing",
+        "text": "Help brands acquire usage rights for high-quality creator videos and social content."
+      },
+      {
+        "title": "Global Campaign Management",
+        "text": "Manage outreach, negotiation, execution, posting, and reporting across markets."
+      }
+    ]
+  },
+  "why": {
+    "title": "Why Brands Choose Encore",
+    "items": [
+      {
+        "title": "AI-native workflow",
+        "text": "We use AI not as a buzzword, but as the operating system behind creator discovery and campaign execution."
+      },
+      {
+        "title": "Global creator network",
+        "text": "Access creators across TikTok, Instagram, YouTube and emerging platforms."
+      },
+      {
+        "title": "Precision over volume",
+        "text": "We don't chase more creators. We find better-fit creators."
+      },
+      {
+        "title": "Human expertise",
+        "text": "AI helps us move faster. Human judgment ensures brand safety, creative fit, and campaign quality."
+      },
+      {
+        "title": "Efficient execution",
+        "text": "A lean team powered by systems, data, and workflow automation."
+      }
+    ]
+  },
+  "process": {
+    "title": "From Brief to Encore Moment",
+    "items": [
+      {
+        "title": "Brand Brief",
+        "label": "Brief",
+        "text": "Understand campaign goals, markets, audience, budget and creative direction."
+      },
+      {
+        "title": "AI Discovery",
+        "label": "Discovery",
+        "text": "Use our AI workflow to identify relevant creators and content signals."
+      },
+      {
+        "title": "Human Review",
+        "label": "Review",
+        "text": "Our team reviews creator fit, content quality, tone, and brand alignment."
+      },
+      {
+        "title": "Creator Outreach",
+        "label": "Outreach",
+        "text": "Negotiate pricing, usage rights, timelines and deliverables."
+      },
+      {
+        "title": "Campaign Execution",
+        "label": "Launch",
+        "text": "Manage posting, content delivery, approvals and communication."
+      },
+      {
+        "title": "Performance Review",
+        "label": "Review",
+        "text": "Track results, summarize learnings and optimize future campaigns."
+      }
+    ]
+  },
+  "cases": {
+    "title": "Campaigns Worth Remembering",
+    "items": [
+      {
+        "brand": "Consumer Electronics",
+        "market": "Europe",
+        "platform": "Instagram / TikTok",
+        "type": "Creator Collaboration",
+        "result": "High-quality lifestyle content and brand exposure.",
+        "description": "A creator-led launch system designed for credibility, relevance, and market-specific storytelling."
+      },
+      {
+        "brand": "E-commerce Platform",
+        "market": "US / Global",
+        "platform": "TikTok",
+        "type": "Content Licensing",
+        "result": "Licensed creator videos for paid and organic usage.",
+        "description": "A scalable licensing workflow that turns high-performing creator content into reusable brand assets."
+      },
+      {
+        "brand": "Travel Brand",
+        "market": "Asia",
+        "platform": "Instagram / TikTok",
+        "type": "Seasonal Campaign",
+        "result": "Creator-driven destination awareness.",
+        "description": "Seasonal creator stories shaped around discovery, aspiration, and measurable audience response."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "What Partners Say",
+    "items": [
+      "Encore helped us move faster from creator discovery to campaign execution.",
+      "Clear communication, strong creator matching, and efficient delivery."
+    ]
+  },
+  "cta": {
+    "title": "Ready to Create Your Encore Moment?",
+    "subtitle": "Tell us your campaign goal. We'll help you find the right creators and build influence that lasts."
+  },
+  "footer": {
+    "tagline": "AI-native influencer marketing agency",
+    "email": "Email: hello@encoreInfluence.com",
+    "whatsapp": "WhatsApp: Available on request",
+    "social": "LinkedIn / Instagram / TikTok"
+  }
+}

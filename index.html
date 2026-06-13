@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Encore Influence | Encore OS for Global Influence</title>
+    <meta
+      name="description"
+      content="Encore Influence builds Encore OS, a proprietary operating system for creator discovery, signal intelligence, matching, licensing, and global campaign control."
+    />
+    <style>
+      :root {
+        --bg: #f6f6f3;
+        --ink: #070707;
+        --muted: rgba(7, 7, 7, 0.58);
+        --soft: rgba(7, 7, 7, 0.08);
+        --line: rgba(7, 7, 7, 0.11);
+        --panel: rgba(255, 255, 255, 0.76);
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 50% -12%, rgba(0, 0, 0, 0.1), transparent 36rem),
+          linear-gradient(180deg, #fbfbf9 0%, var(--bg) 38%, #ffffff 100%);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        opacity: 0.04;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+      a { color: inherit; text-decoration: none; }
+      .shell { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+      .nav {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 50;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        background: rgba(255, 255, 255, 0.74);
+        backdrop-filter: blur(24px);
+      }
+      .nav-inner {
+        height: 66px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; }
+      .mark {
+        width: 36px;
+        height: 36px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        color: #fff;
+        background: #050505;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.18);
+      }
+      .brand small { display: block; margin-top: 2px; color: rgba(0, 0, 0, 0.46); font-weight: 500; }
+      .nav-links { display: flex; align-items: center; gap: 28px; color: rgba(0, 0, 0, 0.58); font-size: 14px; }
+      .actions { display: flex; align-items: center; gap: 8px; }
+      .btn {
+        min-height: 42px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 0 17px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.75);
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform .25s ease, border-color .25s ease, background .25s ease;
+      }
+      .btn:hover { transform: translateY(-1px); border-color: rgba(0, 0, 0, 0.25); background: #fff; }
+      .btn.primary { background: #050505; border-color: #050505; color: #fff; }
+      .hero { overflow: hidden; padding: 142px 0 88px; }
+      .hero-grid { display: grid; grid-template-columns: 1fr 0.94fr; gap: 54px; align-items: center; }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.7);
+        color: rgba(0, 0, 0, 0.62);
+        font-size: 14px;
+      }
+      h1 {
+        margin: 24px 0 0;
+        max-width: 800px;
+        font-size: clamp(48px, 7.7vw, 84px);
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+      .lead { margin: 26px 0 0; max-width: 720px; color: var(--muted); font-size: 20px; line-height: 1.72; }
+      .claim { margin-top: 22px; max-width: 680px; color: rgba(0, 0, 0, 0.78); font-weight: 700; line-height: 1.7; }
+      .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
+      .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 620px; margin-top: 44px; }
+      .metric { border-left: 1px solid var(--line); padding-left: 16px; }
+      .metric strong { display: block; font-size: 18px; }
+      .metric span { display: block; margin-top: 5px; color: rgba(0, 0, 0, 0.45); font-size: 12px; line-height: 1.5; }
+      .os-window {
+        min-height: 458px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.12);
+        backdrop-filter: blur(22px);
+      }
+      .os-top {
+        height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+        border-bottom: 1px solid var(--line);
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 12px;
+      }
+      .traffic { display: flex; gap: 7px; }
+      .traffic span { width: 8px; height: 8px; border-radius: 99px; background: rgba(0, 0, 0, 0.22); }
+      .os-body { display: grid; grid-template-columns: 152px 1fr; min-height: 412px; }
+      .sidebar { padding: 16px; border-right: 1px solid var(--line); background: rgba(250, 250, 248, 0.68); }
+      .side-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        height: 34px;
+        padding: 0 10px;
+        border-radius: 8px;
+        color: rgba(0, 0, 0, 0.55);
+        font-size: 12px;
+      }
+      .side-item.active { background: #050505; color: #fff; }
+      .dashboard { position: relative; padding: 18px; }
+      .core {
+        position: absolute;
+        left: 50%;
+        top: 48%;
+        transform: translate(-50%, -50%);
+        width: 132px;
+        height: 132px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: #050505;
+        color: #fff;
+        text-align: center;
+        box-shadow: 0 0 0 12px rgba(0, 0, 0, 0.04), 0 0 80px rgba(0, 0, 0, 0.25);
+      }
+      .core strong { display: block; font-size: 26px; }
+      .core span { display: block; margin-top: 4px; color: rgba(255, 255, 255, 0.58); font-size: 11px; }
+      .orbit {
+        position: absolute;
+        inset: 54px 42px 42px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 999px;
+      }
+      .node-card {
+        position: absolute;
+        width: 156px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.84);
+        box-shadow: 0 16px 38px rgba(0, 0, 0, 0.08);
+        animation: float 7s ease-in-out infinite;
+      }
+      .node-card:nth-of-type(3) { left: 20px; top: 54px; }
+      .node-card:nth-of-type(4) { right: 20px; top: 72px; animation-delay: -2s; }
+      .node-card:nth-of-type(5) { left: 46px; bottom: 42px; animation-delay: -3.5s; }
+      .node-card:nth-of-type(6) { right: 44px; bottom: 34px; animation-delay: -5s; }
+      .node-card b { display: block; font-size: 13px; }
+      .node-card span { display: block; margin-top: 5px; color: rgba(0, 0, 0, 0.5); font-size: 11px; line-height: 1.45; }
+      @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+      section { padding: 92px 0; }
+      section.dark { background: #050505; color: #fff; }
+      h2 { margin: 0; font-size: clamp(36px, 5vw, 58px); line-height: 1.06; letter-spacing: 0; }
+      .section-head { max-width: 780px; }
+      .section-head p { margin: 22px 0 0; color: var(--muted); font-size: 18px; line-height: 1.7; }
+      .dark .section-head p { color: rgba(255, 255, 255, 0.58); }
+      .story { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 44px; }
+      .story-card, .card, .step, .case, .quote {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--panel);
+        backdrop-filter: blur(18px);
+      }
+      .story-card { padding: 28px; min-height: 230px; }
+      .story-card .kicker { color: rgba(0,0,0,.4); font-size: 12px; font-weight: 800; text-transform: uppercase; }
+      .story-card h3, .card h3, .step h3, .case h3 { margin: 18px 0 0; font-size: 22px; }
+      .story-card p, .card p, .step p, .case p { color: rgba(0,0,0,.56); line-height: 1.72; }
+      .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 46px; }
+      .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 46px; }
+      .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 46px; }
+      .card {
+        min-height: 235px;
+        padding: 28px;
+        transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+      }
+      .card:hover { transform: translateY(-5px); border-color: rgba(0,0,0,.24); box-shadow: 0 28px 70px rgba(0,0,0,.1); }
+      .dark .card { background: rgba(255,255,255,.055); border-color: rgba(255,255,255,.12); }
+      .dark .card p { color: rgba(255,255,255,.58); }
+      .icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 8px; background: #050505; color: white; margin-bottom: 28px; font-weight: 800; }
+      .dark .icon { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.12); }
+      .ops { display: grid; grid-template-columns: .86fr 1.14fr; gap: 48px; align-items: start; }
+      .ops-list { display: grid; gap: 12px; }
+      .ops-item { display: flex; gap: 15px; padding: 20px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.66); }
+      .ops-item p { margin: 8px 0 0; color: rgba(0,0,0,.56); line-height: 1.65; }
+      .process { background: #fff; }
+      .timeline { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 46px; }
+      .step { min-height: 260px; padding: 22px; background: #f7f7f4; }
+      .step .num { color: rgba(0,0,0,.38); margin-bottom: 34px; }
+      .step .label { color: rgba(0,0,0,.38); text-transform: uppercase; font-size: 12px; font-weight: 800; }
+      .case { min-height: 380px; display: flex; flex-direction: column; padding: 26px; }
+      .case dl { display: grid; gap: 13px; margin-top: 24px; font-size: 14px; }
+      .case dt { color: rgba(0,0,0,.38); }
+      .case dd { margin: 4px 0 0; font-weight: 750; }
+      .case p { margin-top: auto; padding-top: 26px; font-size: 14px; }
+      .quote { min-height: 190px; padding: 28px; color: rgba(0,0,0,.72); font-size: 24px; line-height: 1.5; }
+      .cta { padding: 72px 24px; border-radius: 12px; background: #050505; color: white; text-align: center; }
+      .cta p { max-width: 720px; margin: 22px auto 0; color: rgba(255,255,255,.62); font-size: 18px; line-height: 1.7; }
+      footer { padding: 48px 0 28px; border-top: 1px solid var(--line); background: #fff; }
+      .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 42px; }
+      .footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-links nav, .contact { display: grid; gap: 12px; color: rgba(0,0,0,.62); font-size: 14px; }
+      .social { display: flex; gap: 8px; margin-top: 8px; }
+      .social span { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 8px; }
+      .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
+      @media (max-width: 1000px) {
+        .nav-links { display: none; }
+        .hero-grid, .ops, .footer-grid { grid-template-columns: 1fr; }
+        .grid-4, .grid-3, .grid-2, .story, .timeline { grid-template-columns: 1fr 1fr; }
+      }
+      @media (max-width: 680px) {
+        .book-top { display: none; }
+        .hero { padding-top: 118px; }
+        .metrics, .grid-4, .grid-3, .grid-2, .story, .timeline, .footer-links { grid-template-columns: 1fr; }
+        .os-body { grid-template-columns: 1fr; }
+        .sidebar { display: none; }
+        .node-card { width: 142px; }
+        .brand small { display: none; }
+        section { padding: 70px 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="shell nav-inner">
+        <a class="brand" href="#home">
+          <span class="mark">OS</span>
+          <span>Encore Influence <small>Encore OS</small></span>
+        </a>
+        <nav class="nav-links">
+          <a href="#home" data-i18n="nav.home">Home</a>
+          <a href="#os" data-i18n="nav.os">Encore OS</a>
+          <a href="#modules" data-i18n="nav.modules">Modules</a>
+          <a href="#workflow" data-i18n="nav.workflow">Workflow</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </nav>
+        <div class="actions">
+          <a class="btn primary book-top" href="mailto:hello@encoreInfluence.com" data-i18n="common.book">Book a Call</a>
+          <button class="btn" id="langBtn">中文</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="shell hero-grid">
+          <div class="reveal">
+            <div class="eyebrow" data-i18n="hero.eyebrow">Proprietary OS for global influence</div>
+            <h1 data-i18n="hero.title">Encore OS is the operating system behind global creator influence.</h1>
+            <p class="lead" data-i18n="hero.subtitle">Encore Influence is a technology company that built its own system for creator discovery, relationship expansion, signal intelligence, matching, licensing, and campaign control.</p>
+            <p class="claim" data-i18n="hero.claim">Encore is the brand story. Encore OS is the product. Global influence is the application.</p>
+            <div class="hero-actions">
+              <a class="btn primary" href="mailto:hello@encoreInfluence.com" data-i18n="common.book">Book a Call</a>
+              <a class="btn" href="#os" data-i18n="common.explore">Explore Encore OS</a>
+            </div>
+            <div class="metrics" id="metrics"></div>
+          </div>
+          <div class="os-window reveal">
+            <div class="os-top">
+              <div class="traffic"><span></span><span></span><span></span></div>
+              <span>Encore OS / Creator Graph</span>
+            </div>
+            <div class="os-body">
+              <aside class="sidebar">
+                <div class="side-item active" data-side="0">Signal Crawler</div>
+                <div class="side-item" data-side="1">Network Expansion</div>
+                <div class="side-item" data-side="2">Creator Graph</div>
+                <div class="side-item" data-side="3">Campaign Control</div>
+              </aside>
+              <div class="dashboard">
+                <div class="orbit"></div>
+                <div class="core"><div><strong>Encore OS</strong><span>influence system</span></div></div>
+                <div class="node-card"><b data-card-title="0">Crawler layer</b><span data-card-text="0">Collects public creator and content signals.</span></div>
+                <div class="node-card"><b data-card-title="1">Expansion layer</b><span data-card-text="1">Maps follow lists and adjacent creator networks.</span></div>
+                <div class="node-card"><b data-card-title="2">Scoring layer</b><span data-card-text="2">Ranks fit, risk, relevance, and usage value.</span></div>
+                <div class="node-card"><b data-card-title="3">Control layer</b><span data-card-text="3">Turns discovery into repeatable campaign execution.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="os">
+        <div class="shell">
+          <div class="section-head reveal">
+            <h2 data-i18n="story.title">Encore → Encore OS → Global Influence.</h2>
+            <p data-i18n="story.subtitle">The name begins with the moment audiences ask for more. The system turns that idea into infrastructure: a repeatable way to discover, understand, match, license, and activate creators across markets.</p>
+          </div>
+          <div class="story" id="storyGrid"></div>
+        </div>
+      </section>
+
+      <section class="dark" id="modules">
+        <div class="shell">
+          <div class="section-head reveal">
+            <h2 data-i18n="modules.title">The Encore OS product stack.</h2>
+            <p data-i18n="modules.subtitle">Based on our internal crawler and relationship-expansion workflows, Encore OS packages creator marketing into system modules rather than one-off manual searching.</p>
+          </div>
+          <div class="grid-4" id="modulesGrid"></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="shell ops">
+          <div class="section-head reveal">
+            <h2 data-i18n="ops.title">Built for operating, not guessing.</h2>
+            <p data-i18n="ops.subtitle">Influencer marketing becomes more controllable when every decision is grounded in signals, relationships, rights, and execution state.</p>
+          </div>
+          <div class="ops-list" id="opsList"></div>
+        </div>
+      </section>
+
+      <section class="process" id="workflow">
+        <div class="shell">
+          <div class="section-head reveal">
+            <h2 data-i18n="workflow.title">From brief to Encore moment, inside one OS.</h2>
+          </div>
+          <div class="timeline" id="timeline"></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="shell">
+          <div class="section-head reveal">
+            <h2 data-i18n="applications.title">Influencer marketing is the application.</h2>
+            <p data-i18n="applications.subtitle">Encore OS can power creator sourcing, content licensing, overseas launch campaigns, and ongoing global creator operations.</p>
+          </div>
+          <div class="grid-3" id="applicationGrid"></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="shell">
+          <div class="section-head reveal"><h2 data-i18n="proof.title">What partners should feel.</h2></div>
+          <div class="grid-2" id="quotes"></div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="shell cta reveal">
+          <h2 data-i18n="cta.title">Build global influence on Encore OS.</h2>
+          <p data-i18n="cta.subtitle">Tell us your market, category, and creator target. We will run the brief through Encore OS and turn it into a controllable creator operation.</p>
+          <div class="hero-actions" style="justify-content:center">
+            <a class="btn" href="mailto:hello@encoreInfluence.com" data-i18n="common.book">Book a Call</a>
+            <a class="btn" href="mailto:hello@encoreInfluence.com" data-i18n="common.contact">Contact Us</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell footer-grid">
+        <div>
+          <strong>Encore Influence</strong>
+          <div style="margin-top:4px;color:rgba(0,0,0,.48)">安可互动 / Encore OS</div>
+          <p style="max-width:420px;color:rgba(0,0,0,.55);line-height:1.7" data-i18n="footer.tagline">A technology company building the operating system for global creator influence.</p>
+        </div>
+        <div class="footer-links">
+          <nav>
+            <strong style="color:rgba(0,0,0,.45)">Navigation</strong>
+            <a href="#home" data-i18n="nav.home">Home</a>
+            <a href="#os" data-i18n="nav.os">Encore OS</a>
+            <a href="#modules" data-i18n="nav.modules">Modules</a>
+            <a href="#workflow" data-i18n="nav.workflow">Workflow</a>
+            <a href="#contact" data-i18n="nav.contact">Contact</a>
+          </nav>
+          <div class="contact">
+            <strong style="color:rgba(0,0,0,.45)">Contact</strong>
+            <a href="mailto:hello@encoreInfluence.com">Email: hello@encoreInfluence.com</a>
+            <span>LinkedIn / Instagram / TikTok</span>
+            <div class="social"><span>in</span><span>◎</span><span>♪</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="shell" style="margin-top:36px;border-top:1px solid var(--line);padding-top:20px;color:rgba(0,0,0,.38);font-size:12px">© 2026 Encore Influence. All rights reserved.</div>
+    </footer>
+
+    <script>
+      const content = {
+        en: {
+          nav: { home: "Home", os: "Encore OS", modules: "Modules", workflow: "Workflow", contact: "Contact" },
+          common: { book: "Book a Call", explore: "Explore Encore OS", contact: "Contact Us" },
+          hero: {
+            eyebrow: "Proprietary OS for global influence",
+            title: "Encore OS is the operating system behind global creator influence.",
+            subtitle: "Encore Influence is a technology company that built its own system for creator discovery, relationship expansion, signal intelligence, matching, licensing, and campaign control.",
+            claim: "Encore is the brand story. Encore OS is the product. Global influence is the application.",
+            metrics: [{ value: "Crawler", label: "public creator signal collection" }, { value: "Graph", label: "follow-list expansion and relationship mapping" }, { value: "Control", label: "licensing and campaign operations" }],
+            side: ["Signal Crawler", "Network Expansion", "Creator Graph", "Campaign Control"],
+            cards: [["Crawler layer", "Collects public creator and content signals."], ["Expansion layer", "Maps follow lists and adjacent creator networks."], ["Scoring layer", "Ranks fit, risk, relevance, and usage value."], ["Control layer", "Turns discovery into repeatable campaign execution."]]
+          },
+          story: {
+            title: "Encore → Encore OS → Global Influence.",
+            subtitle: "The name begins with the moment audiences ask for more. The system turns that idea into infrastructure: a repeatable way to discover, understand, match, license, and activate creators across markets.",
+            items: [["01", "Encore", "A brand idea about creating moments audiences want to see again."], ["02", "Encore OS", "The proprietary operating system that makes those moments discoverable, matchable, and repeatable."], ["03", "Global Influence", "The application layer: creators, content rights, campaigns, and market execution."]]
+          },
+          modules: {
+            title: "The Encore OS product stack.",
+            subtitle: "Based on our internal crawler and relationship-expansion workflows, Encore OS packages creator marketing into system modules rather than one-off manual searching.",
+            items: [["Signal Crawler", "Collect public creator, profile, content, and audience signals across social platforms."], ["Follow-List Expansion", "Use creator relationship paths to expand from known accounts into adjacent high-fit networks."], ["Creator Intelligence", "Structure content style, category, geography, commercial history, and brand-safety signals."], ["Fit Scoring", "Rank creators by campaign goal, market, category, tone, budget, and licensing potential."], ["Licensing Ledger", "Track usage rights, deliverables, content formats, windows, and commercial terms."], ["Campaign Control", "Move outreach, negotiation, approval, posting, and reporting through a repeatable operating layer."], ["Human Review Console", "Give operators a focused place to apply judgment before creators reach the client."], ["Learning Loop", "Feed campaign results back into future sourcing and matching decisions."]]
+          },
+          ops: {
+            title: "Built for operating, not guessing.",
+            subtitle: "Influencer marketing becomes more controllable when every decision is grounded in signals, relationships, rights, and execution state.",
+            items: [["Creator discovery starts from systems", "Crawler and expansion workflows reduce blind searching and surface creator clusters faster."], ["Matching is scored before it is sold", "Encore OS separates high-volume creator lists from genuinely useful creator fit."], ["Execution becomes trackable", "Rights, pricing, status, approvals, delivery, and learnings stay inside one operating model."], ["Humans stay in the loop", "The system accelerates signal work; human judgment protects tone, safety, and final quality."]]
+          },
+          workflow: { title: "From brief to Encore moment, inside one OS.", items: [["Brief Intake", "Goal", "Market, category, audience, budget, content need, and usage-rights scope enter the system."], ["Signal Crawl", "Discover", "Encore OS collects and refreshes creator and content signals."], ["Network Expansion", "Graph", "Follow lists and related creator paths expand the candidate universe."], ["Fit & Risk Scoring", "Score", "Creators are ranked by relevance, quality, safety, cost, and rights potential."], ["Human Review", "Review", "Operators validate fit, tone, content quality, and brand alignment."], ["Campaign Control", "Operate", "Outreach, licensing, posting, reporting, and learnings move through a repeatable workflow."]] },
+          applications: { title: "Influencer marketing is the application.", subtitle: "Encore OS can power creator sourcing, content licensing, overseas launch campaigns, and ongoing global creator operations.", items: [["Creator Sourcing", "Systematic discovery for TikTok, Instagram, YouTube, and emerging platform creators."], ["Content Licensing", "Find and manage creator videos that can become paid, organic, or marketplace assets."], ["Global Campaign Operations", "Run repeatable overseas influencer campaigns with clearer control over people, rights, and delivery."]] },
+          proof: { title: "What partners should feel.", items: ["This is not a talent list. It feels like an operating system for creator decisions.", "Encore helped us move from scattered searching to a more structured creator operation."] },
+          cta: { title: "Build global influence on Encore OS.", subtitle: "Tell us your market, category, and creator target. We will run the brief through Encore OS and turn it into a controllable creator operation." },
+          footer: { tagline: "A technology company building the operating system for global creator influence." }
+        },
+        zh: {
+          nav: { home: "首页", os: "Encore OS", modules: "系统模块", workflow: "工作流", contact: "联系" },
+          common: { book: "立即咨询", explore: "了解 Encore OS", contact: "联系我们" },
+          hero: {
+            eyebrow: "为全球影响力构建的专有操作系统",
+            title: "Encore OS，是全球创作者影响力背后的操作系统。",
+            subtitle: "安可互动不是传统红人营销公司，而是一家围绕创作者发现、关系扩散、信号分析、智能匹配、内容授权与项目控制构建自有系统的技术公司。",
+            claim: "Encore 是品牌故事。Encore OS 是核心产品。Global Influence 是它的应用场景。",
+            metrics: [{ value: "Crawler", label: "公开创作者信号采集" }, { value: "Graph", label: "关注列表扩散与关系映射" }, { value: "Control", label: "授权与项目执行控制" }],
+            side: ["信号爬取", "关系扩散", "创作者图谱", "项目控制"],
+            cards: [["爬取层", "采集公开创作者与内容信号。"], ["扩散层", "基于关注列表与相邻账号扩展达人网络。"], ["评分层", "评估适配度、风险、相关性与授权价值。"], ["控制层", "把发现转化为可复用的项目执行流程。"]]
+          },
+          story: {
+            title: "Encore → Encore OS → Global Influence.",
+            subtitle: "Encore 源于观众想要“再来一次”的时刻。Encore OS 把这个品牌理念变成基础设施：用系统化方式发现、理解、匹配、授权并激活全球创作者。",
+            items: [["01", "Encore", "品牌故事：创造让受众想再次观看、再次分享的影响力时刻。"], ["02", "Encore OS", "核心产品：让创作者发现、匹配和执行变得可计算、可判断、可复用。"], ["03", "Global Influence", "应用层：红人合作、内容授权、海外传播与全球项目执行。"]]
+          },
+          modules: {
+            title: "Encore OS 产品栈。",
+            subtitle: "基于内部的爬取与关注列表扩散工作流，Encore OS 把红人营销包装成系统模块，而不是一次性的人工找号。",
+            items: [["Signal Crawler", "采集公开创作者资料、内容、平台表现与受众相关信号。"], ["Follow-List Expansion", "从已知账号出发，通过关注列表与关系路径扩展相邻高适配达人网络。"], ["Creator Intelligence", "结构化内容风格、品类、地区、商业合作历史与品牌安全信号。"], ["Fit Scoring", "按品牌目标、市场、品类、调性、预算与授权潜力为达人排序。"], ["Licensing Ledger", "管理使用权、交付内容、素材格式、授权周期与商业条款。"], ["Campaign Control", "将邀约、报价、确认、发布和复盘纳入可复用的执行层。"], ["Human Review Console", "让团队在交付客户前集中判断达人质量、调性与风险。"], ["Learning Loop", "把项目结果回流到后续找号、匹配和执行决策中。"]]
+          },
+          ops: {
+            title: "为可控运营而建，而不是凭感觉找号。",
+            subtitle: "当每个决策都基于信号、关系、授权与执行状态，红人营销才会变得更可控。",
+            items: [["达人发现从系统开始", "爬取与扩散工作流减少盲目搜索，更快发现创作者集群。"], ["匹配先被评分，再被推荐", "Encore OS 区分“名单很多”和“真正适合品牌”。"], ["执行状态可追踪", "授权、报价、状态、审核、交付和复盘都进入同一套运营模型。"], ["人工判断始终在系统内", "系统提升信号处理效率，人工把关品牌安全、内容调性和最终质量。"]]
+          },
+          workflow: { title: "从品牌需求到 Encore 时刻，都在 Encore OS 内完成。", items: [["Brief Intake", "Goal", "市场、品类、目标受众、预算、内容需求和授权范围进入系统。"], ["Signal Crawl", "Discover", "Encore OS 采集并刷新创作者与内容信号。"], ["Network Expansion", "Graph", "通过关注列表与相关账号路径扩展候选达人池。"], ["Fit & Risk Scoring", "Score", "按相关性、质量、安全性、成本与授权潜力进行排序。"], ["Human Review", "Review", "团队复核适配度、内容质量、调性和品牌匹配。"], ["Campaign Control", "Operate", "邀约、授权、发布、报告和经验回流进入可复用工作流。"]] },
+          applications: { title: "红人营销只是应用场景。", subtitle: "Encore OS 可以支撑达人筛选、内容授权、出海Campaign和长期全球创作者运营。", items: [["达人筛选", "系统化发现 TikTok、Instagram、YouTube 及新兴平台创作者。"], ["内容授权", "发现并管理可用于投放、自然传播或电商场景的创作者视频素材。"], ["全球项目运营", "以更清晰的人、授权和交付控制运行海外红人项目。"]] },
+          proof: { title: "合作方应该感受到什么。", items: ["这不是一份达人名单，而是一套创作者决策操作系统。", "安可帮助我们从零散找号，进入更结构化的创作者运营方式。"] },
+          cta: { title: "用 Encore OS 构建全球影响力。", subtitle: "告诉我们你的市场、品类和创作者目标，我们会把 Brief 放进 Encore OS，转化为可控的创作者运营方案。" },
+          footer: { tagline: "一家为全球创作者影响力构建操作系统的技术公司。" }
+        }
+      };
+
+      const get = (obj, path) => path.split(".").reduce((acc, key) => acc && acc[key], obj);
+      const savedLang = localStorage.getItem("encore_locale");
+      let lang = savedLang || ((navigator.language || "").toLowerCase().startsWith("zh") ? "zh" : "en");
+
+      function render(nextLang) {
+        lang = nextLang;
+        localStorage.setItem("encore_locale", lang);
+        document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+        document.title = lang === "zh" ? "安可互动 | Encore OS 全球创作者影响力操作系统" : "Encore Influence | Encore OS for Global Influence";
+        const dict = content[lang];
+        document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = get(dict, el.dataset.i18n); });
+        document.querySelector("#langBtn").textContent = lang === "zh" ? "English" : "中文";
+        document.querySelector("#metrics").innerHTML = dict.hero.metrics.map(m => `<div class="metric"><strong>${m.value}</strong><span>${m.label}</span></div>`).join("");
+        document.querySelectorAll("[data-side]").forEach((el) => { el.textContent = dict.hero.side[Number(el.dataset.side)]; });
+        document.querySelectorAll("[data-card-title]").forEach((el) => { el.textContent = dict.hero.cards[Number(el.dataset.cardTitle)][0]; });
+        document.querySelectorAll("[data-card-text]").forEach((el) => { el.textContent = dict.hero.cards[Number(el.dataset.cardText)][1]; });
+        document.querySelector("#storyGrid").innerHTML = dict.story.items.map(i => `<article class="story-card reveal"><div class="kicker">${i[0]}</div><h3>${i[1]}</h3><p>${i[2]}</p></article>`).join("");
+        document.querySelector("#modulesGrid").innerHTML = dict.modules.items.map(i => `<article class="card reveal"><div class="icon">OS</div><h3>${i[0]}</h3><p>${i[1]}</p></article>`).join("");
+        document.querySelector("#opsList").innerHTML = dict.ops.items.map(i => `<div class="ops-item reveal"><strong>✓</strong><div><h3>${i[0]}</h3><p>${i[1]}</p></div></div>`).join("");
+        document.querySelector("#timeline").innerHTML = dict.workflow.items.map((i, idx) => `<article class="step reveal"><div class="num">0${idx + 1}</div><div class="label">${i[1]}</div><h3>${i[0]}</h3><p>${i[2]}</p></article>`).join("");
+        document.querySelector("#applicationGrid").innerHTML = dict.applications.items.map(i => `<article class="card case reveal"><h3>${i[0]}</h3><p>${i[1]}</p></article>`).join("");
+        document.querySelector("#quotes").innerHTML = dict.proof.items.map(q => `<figure class="quote reveal">“${q}”</figure>`).join("");
+        observe();
+      }
+
+      function observe() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add("visible"); });
+        }, { threshold: 0.08 });
+        document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+      }
+
+      document.querySelector("#langBtn").addEventListener("click", () => render(lang === "zh" ? "en" : "zh"));
+      render(lang);
+    </script>
+  </body>
+</html>
