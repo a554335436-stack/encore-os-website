@@ -401,7 +401,7 @@ function CaseStudies() {
   ];
 
   return (
-    <section className="mx-auto mt-8 w-[min(1320px,calc(100%-72px))]">
+    <section className={`${shell} mt-8`}>
       <div className="mb-7">
         <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-black/35">Case Studies</p>
         <h2 className="mt-3 text-[32px] font-semibold leading-tight tracking-normal">他们的增长，值得被看见</h2>
