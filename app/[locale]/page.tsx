@@ -411,15 +411,15 @@ function CaseStudies() {
         {cases.map((item) => (
           <article
             key={item.brand}
-            className={`${item.variant} relative h-[168px] overflow-hidden rounded-xl border border-black/[0.06] px-6 py-5 shadow-[0_16px_38px_rgba(20,22,14,0.08)]`}
+            className={`${item.variant} relative h-[168px] overflow-hidden rounded-xl border border-black/[0.06] shadow-[0_16px_38px_rgba(20,22,14,0.08)]`}
           >
-            <div className="relative z-10">
-              <span className="inline-flex rounded-md bg-white/55 px-3 py-1 text-[10px] font-semibold uppercase text-black/50 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.35)] backdrop-blur-sm">
+            <div className="absolute left-6 top-6 z-10">
+              <span className="inline-flex rounded-md bg-white/55 px-3 py-1 text-[9px] font-semibold uppercase leading-none text-black/50 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.35)] backdrop-blur-sm">
                 {item.label}
               </span>
-              <h3 className="mt-4 text-[19px] font-semibold leading-none tracking-normal text-black/82">{item.brand}</h3>
-              <div className="mt-5 text-[31px] font-medium leading-none tracking-normal text-black/88">{item.value}</div>
-              <p className="mt-3 text-xs font-medium leading-none text-black/52">{item.metric}</p>
+              <h3 className="mt-[19px] text-[18px] font-semibold leading-none tracking-normal text-black/82">{item.brand}</h3>
+              <div className="mt-[18px] text-[30px] font-medium leading-none tracking-normal text-black/88">{item.value}</div>
+              <p className="mt-[14px] text-[11px] font-medium leading-none text-black/52">{item.metric}</p>
             </div>
             <CaseVisual variant={item.variant} />
           </article>
