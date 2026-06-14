@@ -146,3 +146,42 @@ summary::-webkit-details-marker {
     linear-gradient(105deg, rgba(229, 220, 211, 0.86), rgba(228, 201, 164, 0.54) 48%, rgba(139, 170, 218, 0.74)),
     linear-gradient(0deg, rgba(108, 74, 38, 0.42), transparent 48%);
 }
+
+.hero-stage img {
+  transform: scale(1.015);
+}
+
+.hero-stage-light {
+  background:
+    radial-gradient(circle at 50% 58%, rgba(255, 232, 185, 0.22), transparent 9rem),
+    linear-gradient(100deg, transparent 0 36%, rgba(255, 236, 200, 0.05) 44%, transparent 56% 100%);
+  mix-blend-mode: screen;
+  animation: stage-light-breathe 5.8s ease-in-out infinite;
+}
+
+.hero-stage-glow {
+  background: radial-gradient(ellipse, rgba(255, 224, 166, 0.24), transparent 70%);
+  filter: blur(10px);
+  mix-blend-mode: screen;
+  animation: stage-spot-drift 4.8s ease-in-out infinite;
+}
+
+@keyframes stage-light-breathe {
+  0%, 100% {
+    opacity: 0.58;
+  }
+  50% {
+    opacity: 0.92;
+  }
+}
+
+@keyframes stage-spot-drift {
+  0%, 100% {
+    opacity: 0.38;
+    transform: translate(-50%, 0) scale(0.96);
+  }
+  50% {
+    opacity: 0.72;
+    transform: translate(-50%, 8px) scale(1.08);
+  }
+}

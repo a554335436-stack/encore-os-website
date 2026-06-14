@@ -4,7 +4,6 @@ import {
   ArrowLeft,
   ArrowRight,
   BarChart3,
-  CheckCircle2,
   ChevronDown,
   FileText,
   Globe2,
@@ -173,35 +172,39 @@ function Hero({ locale }: { locale: string }) {
     <section id="home" className="relative overflow-hidden pt-24">
       <div className={`${shell} grid items-center gap-10 pb-14 pt-8 lg:grid-cols-[0.92fr_1.08fr]`}>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#566139]">Encore OS</p>
-          <h1 className="mt-6 max-w-[620px] text-[54px] font-semibold leading-[1.08] tracking-normal text-black">
-            The Operating System Behind Global Creator Marketing.
+          <h1 className="max-w-[620px] text-[64px] font-semibold leading-[1.12] tracking-normal text-black">
+            Your Brand.
+            <br />
+            Worth an Encore.
           </h1>
-          <p className="mt-6 max-w-[620px] text-sm leading-7 text-black/50">
-            Encore OS 是我们自主研发的营销操作系统，整合 AI 能力、数据智能与自动化工作流，帮助品牌更快发现、更准匹配、更好协作，让每一次营销都更可控、更可复利、更高效。
+          <p className="mt-9 max-w-[620px] text-[40px] leading-tight text-black/50">
+            值得，再来一次。
           </p>
           <div className="mt-8 flex gap-4">
             <Link href={`/${locale}#contact`} className="flex h-10 items-center gap-3 rounded-md bg-[#081109] px-5 text-xs font-semibold text-white">
-              Book a Demo
+              Book a Strategy Call
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link href={`/${locale}#modules`} className="flex h-10 items-center rounded-md border border-black/10 bg-white px-5 text-xs font-semibold text-black">
-              Explore System Modules
-            </Link>
-          </div>
-          <div className="mt-12 flex flex-wrap gap-7 text-sm text-black/55">
-            {["AI 驱动", "数据智能", "自动化执行", "人机协同", "全球覆盖"].map((item) => (
-              <span key={item} className="inline-flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-[#657148]" />
-                {item}
-              </span>
-            ))}
           </div>
         </div>
 
-        <OsGraphic />
+        <HeroStage />
       </div>
     </section>
+  );
+}
+
+function HeroStage() {
+  return (
+    <div className="hero-stage relative h-[520px] overflow-hidden rounded-tl-[86px] bg-black shadow-[0_24px_70px_rgba(0,0,0,0.16)]">
+      <img
+        src="/images/hero-stage.png"
+        alt="A dark theater stage with a single spotlight over a microphone"
+        className="h-full w-full object-cover object-right"
+      />
+      <span className="hero-stage-light pointer-events-none absolute inset-0" />
+      <span className="hero-stage-glow pointer-events-none absolute left-[49%] top-[39%] h-40 w-20 -translate-x-1/2 rounded-full" />
+    </div>
   );
 }
 
