@@ -200,9 +200,10 @@ function HeroStage() {
       <img
         src="/images/hero-stage.png"
         alt="A dark theater stage with a single spotlight over a microphone"
-        className="h-full w-full object-cover object-right"
+        className="absolute right-0 top-[-58px] h-[640px] w-auto max-w-none object-cover"
       />
       <span className="hero-stage-light pointer-events-none absolute inset-0" />
+      <span className="hero-stage-beam pointer-events-none absolute inset-0" />
       <span className="hero-stage-glow pointer-events-none absolute left-[49%] top-[39%] h-40 w-20 -translate-x-1/2 rounded-full" />
     </div>
   );
